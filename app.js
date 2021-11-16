@@ -1,9 +1,17 @@
-const http = require("http");
-const server = http.createServer((req, res)=>
+const express = require("express");
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.get("/", (req, res)=>
 {
-  console.log(req);
+  res.render("index");
 })
-server.listen(3000, ()=>
+app.use((req, res)=>
+{
+  res.status(404).render("404");
+})
+app.listen(3000, ()=>
 {
   console.log("listening to port 3000...")
 })
