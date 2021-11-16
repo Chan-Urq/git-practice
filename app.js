@@ -9,7 +9,8 @@ app.get("/", (req, res)=>
 })
 app.use((req, res)=>
 {
-  res.status(404).render("404");
+  console.log(req.url);
+  res.status(404).render("404", {urlErr: req.url});
 })
 app.listen(3000, ()=>
 {
